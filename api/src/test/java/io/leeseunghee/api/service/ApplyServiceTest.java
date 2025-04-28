@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import io.leeseunghee.api.respository.CouponCountRepository;
 import io.leeseunghee.api.respository.CouponRepository;
 
 @SpringBootTest
@@ -20,6 +21,9 @@ class ApplyServiceTest {
 
 	@Autowired
 	private CouponRepository couponRepository;
+
+	@Autowired
+	private CouponCountRepository couponCountRepository;
 
 	@Test
 	void 한번만_응모() {
@@ -57,6 +61,6 @@ class ApplyServiceTest {
 		long count = couponRepository.count();
 
 	    // then -- 예상되는 변화 및 결과
-		assertThat(count).isEqualTo(threadCount);
+		assertThat(count).isEqualTo(100);
 	}
 }
